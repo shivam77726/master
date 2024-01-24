@@ -1,0 +1,36 @@
+head	1.1;
+access;
+symbols;
+locks
+	shivamgupta:1.1; strict;
+comment	@ * @;
+
+
+1.1
+date	2023.02.04.18.55.36;	author shivamgupta;	state Exp;
+branches;
+next	;
+
+
+desc
+@This is to start the file
+created main fire
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@#include "headers.h"
+#include "declaration.h"
+
+
+int main()
+{
+	printf("Main Function Started\n");
+
+	return 0;
+}
+@

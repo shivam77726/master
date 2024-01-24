@@ -1,0 +1,52 @@
+#! /bin/bash
+
+
+
+buildserver()
+{
+	cd ./server
+	make clean
+	if(make)
+	then
+		echo "Server build successfully"
+	else
+		echo "Error: Server build failed"
+	fi
+}
+
+buildclient()
+{
+	cd ../client
+	if(gcc -DDEBUG -o rc1 rc1.c)
+	then
+		echo "Client build successfully"
+	else
+		echo "Error: Client build failed"
+	fi
+}
+
+buildVendor()
+{
+        cd ../vendor
+        if(gcc -DDEBUG -o adder adder.c)
+        then
+                echo "Adder build successfully"
+        else
+                echo "Error: Adder build failed"
+        fi
+}
+
+
+buildserver
+buildclient
+buildVendor
+
+read -n 1 -p "Want to run server (y/n):" REPLY
+
+echo "server: $REPLY"
+if [ "$REPLY" = 'y' ]
+then
+	cd ../server
+	./server
+fi
+echo
