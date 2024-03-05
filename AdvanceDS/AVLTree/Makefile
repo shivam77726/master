@@ -4,8 +4,8 @@ CC= gcc
 CF= -c
 DF= -DDEBUG
 
-tree: main.o mainMenu.o createTree.o createNode.o insertNode.o inOrderTraversal.o preOrderTraversal.o postOrderTraversal.o deleteTree.o displayTree.o depthOfTree.o
-	${CC} -o tree main.o mainMenu.o createTree.o createNode.o insertNode.o inOrderTraversal.o preOrderTraversal.o postOrderTraversal.o deleteTree.o displayTree.o depthOfTree.o
+tree: main.o mainMenu.o createTree.o createNode.o insertNode.o inOrderTraversal.o preOrderTraversal.o postOrderTraversal.o deleteTree.o displayTree.o depthOfTree.o getBalanceFactor.o
+	${CC} -o tree main.o mainMenu.o createTree.o createNode.o insertNode.o inOrderTraversal.o preOrderTraversal.o postOrderTraversal.o deleteTree.o displayTree.o depthOfTree.o getBalanceFactor.o
 
 
 main.o:main.c headers.h declarations.h dataStructure.h
@@ -26,6 +26,8 @@ postOrderTraversal.o:postOrderTraversal.c headers.h declarations.h dataStructure
 	${CC} ${CF} ${DF} postOrderTraversal.c
 depthOfTree.o:depthOfTree.c headers.h declarations.h dataStructure.h
 	${CC} ${CF} ${DF} depthOfTree.c
+getBalancefactor.o:getBalanceFactor.c headers.h declarations.h dataStructure.h
+	${CC} ${CF} ${DF} getBalanceFactor.c
 displayTree.o:displayTree.c headers.h declarations.h dataStructure.h
 	${CC} ${CF} ${DF} displayTree.c
 deleteTree.o:deleteTree.c headers.h declarations.h dataStructure.h

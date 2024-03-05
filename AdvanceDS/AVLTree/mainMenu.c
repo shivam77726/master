@@ -4,6 +4,7 @@
 
 void* mainMenu (void* arg)
 {
+	int depth=0;
 	Node* tree=(Node*)arg;
 	unsigned short choice;
 #ifdef DEBUG
@@ -47,7 +48,7 @@ void* mainMenu (void* arg)
 				postOrderTraversal((void*)tree);			//Post Order Traversal
 				break;
 			case 6:
-				depthOfTree((void*)tree);				//Depth Of Tree
+				depth=*(int*)depthOfTree((void*)tree);				//Depth Of Tree
 				printf("Depth of the Tree:%d\n",depth);
 				break;
 			case 7:

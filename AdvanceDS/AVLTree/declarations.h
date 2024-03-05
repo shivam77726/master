@@ -12,6 +12,7 @@ extern void* inOrderTraversal(void*);
 extern void* preOrderTraversal(void*);
 extern void* postOrderTraversal(void*);
 extern void* depthOfTree(void*);
+extern void* getBalanceFactor(void*);
 extern void* displayTree(void*);
 
 
