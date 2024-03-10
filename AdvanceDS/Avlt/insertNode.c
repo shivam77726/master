@@ -28,11 +28,11 @@ void* insertNode(void* arg)
 		printf("Key alredy exist in the tree\n");
 
 
-	tree->height=1+max(left->height,right->height);
+	tree->height=1+(tree->left->height > tree->right->height ? tree->left->height:tree->right->height);
 
 #ifdef DEBUG
 	printf("%s End.\n",__func__);
 #endif
 
-	return (void*)0;
+	return (void*)arg;
 }
