@@ -4,6 +4,8 @@ CC= gcc
 CF= -c
 DF= -DDEBUG
 
+
+
 tree: main.o mainMenu.o createTree.o createNode.o insertNode.o inOrderTraversal.o preOrderTraversal.o postOrderTraversal.o deleteTree.o displayTree.o depthOfTree.o getBalanceFactor.o
 	${CC} -o tree main.o mainMenu.o createTree.o createNode.o insertNode.o inOrderTraversal.o preOrderTraversal.o postOrderTraversal.o deleteTree.o displayTree.o depthOfTree.o getBalanceFactor.o
 

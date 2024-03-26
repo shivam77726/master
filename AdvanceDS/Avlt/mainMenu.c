@@ -14,6 +14,7 @@ void* mainMenu(void* arg)
 	printf("__mainMenu___\n");
 	printf("1.Crete Tree\n");
 	printf("2.Insert Node\n");
+	printf("3.InOrderTraversal\n");
 	printf("0.Exit\n");
 	printf("Enter Choice:");
 	scanf("%d",&choice);
@@ -23,14 +24,34 @@ void* mainMenu(void* arg)
 		fptr[0](arg);	//Exit Program
 		exit(0);
 	}
-	else if(choice==1 && arg ==NULL)
-		arg=fptr[2](arg);		//Crete Tree
-	else if(choice==2)
+	else if(choice==1)
 	{
-		printf("Please Enter Data:");
-		scanf("%d",&di.key);
-		di.node=(Node*)arg;
-		arg=fptr[4]((void*)&di);		//Insert node
+		if(arg==NULL)
+		{
+			printf("Please Enter Data:");
+			scanf("%d",&di.key);
+			arg=fptr[2]((void*)&di.key);		//Crete Tree
+		}
+		else
+			printf("\nTree already present\n");
+	}
+	else if(choice==2)	
+	{
+		if(arg==NULL)
+			printf("\nTree is not present\n");
+		else
+		{
+			printf("Please Enter Data:");
+			scanf("%d",&di.key);
+			printf("arg:%X\n",(Node*)arg);
+			di.node=(Node*)arg;
+			fptr[4]((void*)&di);		//Insert node
+		}
+	}
+	else if(choice==3)
+	{
+		printf("arg:%X\n",(Node*)arg);
+		fptr[5](arg);				//Inorder Travesal
 	}
 	else
 		printf("Please Enter Valid Option\n");
