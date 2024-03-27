@@ -8,7 +8,7 @@ int main()
 #ifdef DEBUG
 	printf("%s Begin.\n",__func__);
 #endif
-
+	printf("Test Function");
 
 #ifdef DEBUG
 	printf("%s End.\n",__func__);
