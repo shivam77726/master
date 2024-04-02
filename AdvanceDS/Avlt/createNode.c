@@ -17,7 +17,7 @@ void* createNode(void* arg)
 	node->left=NULL;
 	node->right=NULL;
 	node->height=1;
-	printf("%s Node:%X\n",__func__,node);
+	printf("%s Node:%p\n",__func__,node);
 
 #ifdef DEBUG
 	printf("%s End.\n",__func__);

@@ -1,4 +1,4 @@
-#define NOF 7
+#define NOF 10
 
 void init(void);
 
@@ -9,5 +9,6 @@ extern void* createNode(void*);
 extern void* insertNode(void*);
 extern void* inOrderTraversal(void*);
 extern void* getBalanceFactor(void*);
+extern void* leftLeftRotate(void*);
 
 extern void* (*fptr[NOF])(void*);

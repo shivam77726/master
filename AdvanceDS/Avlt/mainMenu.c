@@ -43,14 +43,14 @@ void* mainMenu(void* arg)
 		{
 			printf("Please Enter Data:");
 			scanf("%d",&di.key);
-			printf("arg:%X\n",(Node*)arg);
+			printf("arg:%p\n",(Node*)arg);
 			di.node=(Node*)arg;
-			fptr[4]((void*)&di);		//Insert node
+			arg=fptr[4]((void*)&di);		//Insert node
 		}
 	}
 	else if(choice==3)
 	{
-		printf("arg:%X\n",(Node*)arg);
+		printf("arg:%p\n",(Node*)arg);
 		fptr[5](arg);				//Inorder Travesal
 	}
 	else

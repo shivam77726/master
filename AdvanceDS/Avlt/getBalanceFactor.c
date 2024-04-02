@@ -69,6 +69,7 @@ void* getBalanceFactor(void* arg)
                         else
                         {
                                 printf("Need to do LL rotation\n");
+				return leftLeftRotate((void*)arg);
                         }
                 }
         }
@@ -78,5 +79,5 @@ void* getBalanceFactor(void* arg)
 	printf("%s End.\n",__func__);
 #endif
 
-	return (void*)0;
+	return arg;
 }

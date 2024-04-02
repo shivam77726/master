@@ -20,7 +20,7 @@ void* insertNode(void* arg)
 #ifdef DEBUG
 	printf("%s Begin.\n",__func__);
 #endif
-	printf("%d %X\n",__LINE__,((DSinsert*)arg)->node);
+	printf("%d Arg->Node:%p\n",__LINE__,((DSinsert*)arg)->node);
 
 	if(!tree)
 		return fptr[3]((void*)&di->key);  //Create Node
@@ -28,13 +28,13 @@ void* insertNode(void* arg)
 	{
 		di->node=tree->left;
 		tree->left=(Node*)insertNode((void*)di);
-		printf("%X\n",tree->left);
+		printf("Tree->Left:%p\n",tree->left);
 	}
 	else if(di->key > tree->data)
 	{
 		di->node=tree->right;
 		tree->right=(Node*)insertNode((void*)di);
-		printf("%X\n",tree->right);
+		printf("Tree->Right:%p\n",tree->right);
 	}
 	else
 		printf("Key alredy exist in the tree\n");
@@ -61,7 +61,7 @@ void* insertNode(void* arg)
 //		bf=tree->left->height - tree->right->height;
 	}
 
-	getBalanceFactor((void*)tree);
+	tree=getBalanceFactor((void*)tree);
 /*
 	if(bf>1 || bf <-1)
 	{
