@@ -3,7 +3,7 @@
 #include "dataStructure.h"
 
 
-void* leftLeftRotate(void* arg)
+void* leftRightRotate(void* arg)
 {
 	Node *root;
 #ifdef DEBUG
@@ -11,10 +11,13 @@ void* leftLeftRotate(void* arg)
 #endif
 	
 	printf("arg:%p,arg->Left%p,arg->Right:%p\n",(Node*)arg,((Node*)arg)->left,((Node*)arg)->right);
-	root=((Node*)arg)->left;
+	root=((Node*)arg)->left->right;
+	((Node*)arg)->left->right=root->left;
+	root->left=((Node*)arg)->left;
 	((Node*)arg)->left=root->right;
-	root->right=(Node*)arg;
-	root->right->height=root->height-1;
+	root->right=((Node*)arg);
+	root->height+=1;
+	root->right->height=root->left->height=root->height-1;
 	
 	printf("Root:%p,Root->Left%p,Root->Right:%p\n",root,root->left,root->right);
 

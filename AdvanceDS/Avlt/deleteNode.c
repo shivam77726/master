@@ -3,7 +3,7 @@
 #include "dataStructure.h"
 
 
-void* insertNode(void* arg)
+void* deleteNode(void* arg)
 {
 	Node* tree;
 	//DSinsert *di=(DSinsert*)arg;
@@ -14,23 +14,52 @@ void* insertNode(void* arg)
 #endif
 	printf("%d Arg->Node:%p\n",__LINE__,((DSinsert*)arg)->node);
 
-	if(!(((DSinsert*)arg)->node))
-		return fptr[3]((void*)&((DSinsert*)arg)->key);  //Create Node
-	else if(((DSinsert*)arg)->key < ((DSinsert*)arg)->node->data)
+	if(((DSinsert*)arg)->node==NULL)
+	{
+		printf("Key doesn't exist\n");
+		return (void*)((DSinsert*)arg)->node;
+	}
+	
+	if(((DSinsert*)arg)->key < ((DSinsert*)arg)->node->data)
 	{
 		((DSinsert*)arg)->node=((DSinsert*)arg)->node->left;
-		tree->left=(Node*)insertNode(arg);
+		tree->left=(Node*)deleteNode(arg);
 		printf("Tree->Left:%p\n",tree->left);
 	}
 	else if(((DSinsert*)arg)->key > ((DSinsert*)arg)->node->data)
 	{
 		((DSinsert*)arg)->node=((DSinsert*)arg)->node->right;
-		tree->right=(Node*)insertNode(arg);
+		tree->right=(Node*)deleteNode(arg);
 		printf("Tree->Right:%p\n",tree->right);
 	}
-	else
-		printf("Key alredy exist in the tree\n");
-	
+	else 
+	{
+//		if(((DSinsert*)arg)->key == ((DSinsert*)arg)->node->data)
+		if(((DSinsert*)arg)->node->left==NULL && ((DSinsert*)arg)->node->right==NULL)
+		{
+			free(((DSinsert*)arg)->node);
+			return NULL;
+		}
+		else if(((DSinsert*)arg)->node->left==NULL && ((DSinsert*)arg)->node->right!=NULL)
+		{
+			Node* temp=((DSinsert*)arg)->node->right;
+			free(((DSinsert*)arg)->node);
+			return temp;
+		}
+		else if(((DSinsert*)arg)->node->left!=NULL && ((DSinsert*)arg)->node->right==NULL)
+		{
+			Node* temp=((DSinsert*)arg)->node->left;
+			free(((DSinsert*)arg)->node);
+			return temp;
+		}
+		else if(((DSinsert*)arg)->node->left!=NULL && ((DSinsert*)arg)->node->right!=NULL)
+		{
+			Node* temp=((DSinsert*)arg)->node->right;
+			free(((DSinsert*)arg)->node);
+			return temp;
+		}
+		
+	}
 
         if(tree->left==NULL && tree->right!=NULL)
 	{

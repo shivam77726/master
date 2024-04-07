@@ -4,8 +4,8 @@ CC=gcc
 CF=-c
 DF=-DDEBUG
 
-AVL: main.o mainMenu.o exitProgram.o createTree.o createNode.o insertNode.o inOrderTraversal.o getBalanceFactor.o init.o leftLeftRotate.o
-	${CC} -o AVL main.o mainMenu.o exitProgram.o createTree.o createNode.o insertNode.o inOrderTraversal.o getBalanceFactor.o init.o leftLeftRotate.o
+AVL: main.o mainMenu.o exitProgram.o createTree.o createNode.o insertNode.o inOrderTraversal.o getBalanceFactor.o init.o leftLeftRotate.o rightRightRotate.o leftRightRotate.o rightLeftRotate.o deleteNode.o
+	${CC} -o AVL main.o mainMenu.o exitProgram.o createTree.o createNode.o insertNode.o inOrderTraversal.o getBalanceFactor.o init.o leftLeftRotate.o rightRightRotate.o leftRightRotate.o rightLeftRotate.o deleteNode.o
 
 
 init.o:init.c declaration.h
@@ -28,6 +28,14 @@ getBalanceFactor.o:getBalanceFactor.c headers.h declaration.h dataStructure.h
 	${CC} ${CF} ${DF} getBalanceFactor.c
 leftLeftRotate.o:leftLeftRotate.c headers.h declaration.h dataStructure.h
 	${CC} ${CF} ${DF} leftLeftRotate.c
+rightRightRotate.o:rightRightRotate.c headers.h declaration.h dataStructure.h
+	${CC} ${CF} ${DF} rightRightRotate.c
+leftRightRotate.o:leftRightRotate.c headers.h declaration.h dataStructure.h
+	${CC} ${CF} ${DF} leftRightRotate.c
+rightLeftRotate.o:rightLeftRotate.c headers.h declaration.h dataStructure.h
+	${CC} ${CF} ${DF} rightLeftRotate.c
+deleteNode.o:deleteNode.c headers.h declaration.h dataStructure.h
+	${CC} ${CF} ${DF} deleteNode.c
 
 
 clean:

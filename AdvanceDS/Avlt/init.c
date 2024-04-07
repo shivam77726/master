@@ -8,6 +8,10 @@ void* insertNode(void*);
 void* inOrderTraversal(void*);
 void* getBalanceFactor(void*);
 void* leftLeftRotate(void*);
+void* rightRightRotate(void*);
+void* leftRightRotate(void*);
+void* rightLeftRotate(void*);
+void* deleteNode(void*);
 
 void* (*fptr[NOF])(void*);
 
@@ -23,4 +27,8 @@ void init(void)
 	fptr[5]=inOrderTraversal;
 	fptr[6]=getBalanceFactor;
 	fptr[7]=leftLeftRotate;
+	fptr[8]=rightRightRotate;
+	fptr[9]=leftRightRotate;
+	fptr[10]=rightLeftRotate;
+	fptr[11]=deleteNode;
 }
