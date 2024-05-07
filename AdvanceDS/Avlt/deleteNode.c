@@ -12,7 +12,7 @@ void* deleteNode(void* arg)
 #ifdef DEBUG
 	printf("%s Begin.\n",__func__);
 #endif
-	printf("%d Arg->Node:%p\n",__LINE__,((DSinsert*)arg)->node);
+	printf("%d Arg->Node:%p Tree->data:%d\n",__LINE__,((DSinsert*)arg)->node,tree->data);
 
 	if(((DSinsert*)arg)->node==NULL)
 	{
@@ -24,13 +24,13 @@ void* deleteNode(void* arg)
 	{
 		((DSinsert*)arg)->node=((DSinsert*)arg)->node->left;
 		tree->left=(Node*)deleteNode(arg);
-		printf("Tree->Left:%p\n",tree->left);
+		printf("Tree->Left:%p,tree->data:%d\n",tree->left,tree->data);
 	}
 	else if(((DSinsert*)arg)->key > ((DSinsert*)arg)->node->data)
 	{
 		((DSinsert*)arg)->node=((DSinsert*)arg)->node->right;
 		tree->right=(Node*)deleteNode(arg);
-		printf("Tree->Right:%p\n",tree->right);
+		printf("Tree->Right:%p Tree->data:%d\n",tree->right,tree->data);
 	}
 	else 
 	{
@@ -52,82 +52,38 @@ void* deleteNode(void* arg)
 			free(((DSinsert*)arg)->node);
 			return temp;
 		}
-		else if(((DSinsert*)arg)->node->left!=NULL && ((DSinsert*)arg)->node->right!=NULL)
+		else
 		{
 			Node* temp=((DSinsert*)arg)->node->right;
-			free(((DSinsert*)arg)->node);
-			return temp;
+                        while(temp)
+                        {
+                                if(temp->left==NULL)
+                                {
+                                        ((DSinsert*)arg)->node->data=temp->data;
+					printf("Tree->Right:%p Tree->data:%d\n",tree->right,tree->data);
+                                        temp->data=((DSinsert*)arg)->key;
+					printf("Tree->Leftt:%p Tree->data:%d\n",tree->left,tree->data);
+					((DSinsert*)arg)->node=((DSinsert*)arg)->node->right;
+					deleteNode(arg);
+
+                                        break;
+                                }
+                                temp=temp->left;
+                        }
+
 		}
 		
 	}
 
-        if(tree->left==NULL && tree->right!=NULL)
-	{
-		tree->height=1+tree->right->height;
-//		bf= - tree->right->height;	
-	}
-	else if(tree->right==NULL && tree->left!=NULL)
-	{
-		tree->height=1+tree->left->height;
-//		bf= tree->left->height;	
-	}
-	else if(tree->right==NULL && tree->left==NULL)
-	{
-		tree->height=1;
-//		bf=0;
-	}
-	else
-	{
-		tree->height=1+(tree->left->height > tree->right->height ? tree->left->height:tree->right->height);
-//		bf=tree->left->height - tree->right->height;
-	}
+
+	printf("%d Tree:%p Tree->Leftt:%p Tree->data:%d\n",__LINE__,tree,tree->left,tree->data);
+	fptr[12]((void*)tree);					//Height of the node
 
 	((DSinsert*)arg)->node=tree;
 	tree=getBalanceFactor(arg);
 	printf("tree root:%p",tree);
 
 
-/*
-	if(bf>1 || bf <-1)
-	{
-		if(tree->left==NULL && tree->right==NULL)
-		{
-			printf("Balance Factor is Zero\n");
-		}
-		else if(tree->left==NULL)
-		{
-
-			if(tree->right->left==NULL && tree->right->right==NULL)
-			{
-				printf("Balance Factor is Zero\n");
-			}
-			else if(tree->right->left==NULL)
-			{
-				printf("Need to do RR rotation");
-			}
-			else
-			{
-				printf("Need to do RL rotation");
-			}
-
-		}
-		else
-		{
-			if(tree->left->left==NULL && tree->left->right==NULL)
-			{
-				printf("Balance Factor is Zero\n");
-			}
-			else if(tree->left->left==NULL)
-			{
-				printf("Need to do LR rotation");
-			}
-			else
-			{
-				printf("Need to do LL rotation");
-			}
-		}
-	}
-*/
 #ifdef DEBUG
 	printf("%s End.\n",__func__);
 #endif

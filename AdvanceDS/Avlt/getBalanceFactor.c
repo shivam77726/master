@@ -45,13 +45,14 @@ void* getBalanceFactor(void* arg)
 
                         if(((DSinsert*)arg)->key > ((DSinsert*)arg)->node->right->data)
                         {
-                                printf("Need to do RR rotation\n");
-				return fptr[8]((void*)((DSinsert*)arg)->node);
+                                printf("Need to do Left rotation\n");
+				return fptr[7]((void*)((DSinsert*)arg)->node);
                         }
                         else
                         {
                                 printf("Need to do RL rotation\n");
-				return fptr[10]((void*)((DSinsert*)arg)->node);
+				((DSinsert*)arg)->node->right=fptr[8]((void*)((DSinsert*)arg)->node->right);
+				return fptr[7]((void*)((DSinsert*)arg)->node);
                         }
 
                 }
@@ -60,12 +61,13 @@ void* getBalanceFactor(void* arg)
                         if(((DSinsert*)arg)->key > ((DSinsert*)arg)->node->left->data)
                         {
                                 printf("Need to do LR rotation\n");
-				return fptr[9]((void*)((DSinsert*)arg)->node);
+				((DSinsert*)arg)->node->left=fptr[7]((void*)((DSinsert*)arg)->node->left);
+				return fptr[8]((void*)((DSinsert*)arg)->node);
                         }
                         else
                         {
-                                printf("Need to do LL rotation\n");
-				return fptr[7]((void*)((DSinsert*)arg)->node);
+                                printf("Need to do Right rotation\n");
+				return fptr[8]((void*)((DSinsert*)arg)->node);
                         }
                 }
         }

@@ -11,10 +11,11 @@ void* leftLeftRotate(void* arg)
 #endif
 	
 	printf("arg:%p,arg->Left%p,arg->Right:%p\n",(Node*)arg,((Node*)arg)->left,((Node*)arg)->right);
-	root=((Node*)arg)->left;
-	((Node*)arg)->left=root->right;
-	root->right=(Node*)arg;
-	root->right->height=root->height-1;
+	root=((Node*)arg)->right;
+	((Node*)arg)->right=root->left;
+	root->left=(Node*)arg;
+	heightNode(arg);
+	heightNode(root);
 	
 	printf("Root:%p,Root->Left%p,Root->Right:%p\n",root,root->left,root->right);
 

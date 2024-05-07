@@ -12,6 +12,7 @@ void* rightRightRotate(void*);
 void* leftRightRotate(void*);
 void* rightLeftRotate(void*);
 void* deleteNode(void*);
+void* heightNode(void*);
 
 void* (*fptr[NOF])(void*);
 
@@ -31,4 +32,5 @@ void init(void)
 	fptr[9]=leftRightRotate;
 	fptr[10]=rightLeftRotate;
 	fptr[11]=deleteNode;
+	fptr[12]=heightNode;
 }

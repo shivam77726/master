@@ -1,4 +1,4 @@
-#define NOF 12
+#define NOF 13
 
 void init(void);
 
@@ -14,5 +14,6 @@ extern void* rightRightRotate(void*);
 extern void* leftRightRotate(void*);
 extern void* rightLeftRotate(void*);
 extern void* deleteNode(void*);
+extern void* heightNode(void*);
 
 extern void* (*fptr[NOF])(void*);
